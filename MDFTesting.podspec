@@ -9,6 +9,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.requires_arc = true
   s.ios.deployment_target = '9.0'
+  s.swift_version = '5.0'
   s.default_subspec = "MDFTesting"
 
   s.subspec "MDFTesting" do |ss|
@@ -16,5 +17,4 @@ Pod::Spec.new do |s|
     ss.source_files = "src/*.{h,m,mm,swift}", "src/private/*.{h,m,mm,swift}"
     ss.framework = "XCTest"
   end
-
 end

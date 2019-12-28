@@ -16,7 +16,7 @@ limitations under the License.
 
 #import <XCTest/XCTest.h>
 
-#import "MDFTesting.h"
+#import <MDFTesting/MDFTesting.h>
 
 @interface MDFTestingExampleTests : XCTestCase
 

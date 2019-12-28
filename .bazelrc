@@ -1,4 +1,4 @@
-# Copyright 2019-present The Material Foundation Authors. All Rights Reserved.
+# Copyright 2020-present The Material Foundation Authors. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,14 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
-   
-git_repository(
-    name = "bazel_workspace_apple",
-    remote = "https://github.com/material-foundation/bazel-workspace-apple.git",
-    commit = "5f34d6470dfd3896868594f25f80158e02280f42",  # Jan 03, 2020
-    shallow_since = "1578063046 -0500",  # Recommended by bazel.
-)
+# Common flags for all builds
+build --verbose_failures
+build --test_output=errors
 
-load("@bazel_workspace_apple//apple:repositories.bzl", "apple_workspace_dependencies")
-apple_workspace_dependencies()
+# Platform-specific flags
+build --apple_platform_type=ios
+
+# Swift-specific features: https://github.com/bazelbuild/rules_swift/blob/master/swift/internal/features.bzl
+build --features=swift.enable_batch_mode
+build --features=swift.use_global_module_cache
