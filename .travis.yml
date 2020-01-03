@@ -15,7 +15,7 @@ jobs:
 before_install:
   - if [ "$TOOLCHAIN" == "bazel" ]; then
       wget -O bazelisk "https://github.com/bazelbuild/bazelisk/releases/download/v1.2.1/bazelisk-darwin-amd64";
-      if "$(cat bazelisk | openssl sha256 -sha256)" -ne "edeeebb65f4757c802cd7a479fb86622c3de46a0fa313e6bcbc2efdd37a588b3"; then
+      if [ "$(cat bazelisk | openssl sha256 -sha256)" != "edeeebb65f4757c802cd7a479fb86622c3de46a0fa313e6bcbc2efdd37a588b3" ]; then
         echo "Bazelisk SHA mismatch.";
         exit 1;
       fi
